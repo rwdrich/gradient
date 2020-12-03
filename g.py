@@ -52,5 +52,5 @@ def g(pid, n):
     trendline = ( n * sumxiyi) - (sumx * sumy )   /  (n * sumxi2) - (sumx * sumx)
 
     sx = ((n+1 * n) / 2)
-    return (n * sumxiyi) - sx / (n * sumxi2) -  (sx * sx)
+    return ((n * sumxiyi) - sx) / ((n * sumxi2) -  (sx * sx))
 
