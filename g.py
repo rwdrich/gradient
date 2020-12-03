@@ -1,5 +1,5 @@
 import os
-import system
+import sys
 
 def isIdle(self, pid, n):
     # The current format of the file is:
@@ -9,8 +9,8 @@ def isIdle(self, pid, n):
     self.outputFile = "data.txt"
     # Calculating Memory
     data: List[List[int]] = []
-    for line in system.os(f"grep {pid} {self.outputFile} | tail -n {n}").splitlines():
-        data.append(list(map(int, line.split())))
+#    for line in system.os(f"grep {pid} {self.outputFile} | tail -n {n}").splitlines():
+ #       data.append(list(map(int, line.split())))
 
     sumMem = 0
     for row in data:
@@ -34,12 +34,13 @@ def g(self, pid, n):
     self.outputFile = "data.txt"
     # Calculating Memory
     data: List[List[int]] = []
-    for line in system.os(f"grep {pid} {self.outputFile} | tail -n {n}").splitlines():
+    for line in os.system(f"grep {pid} {self.outputFile} | tail -n {n}").splitlines():
         data.append(list(map(int, line.split())))
 
     sumy = 0
     xiyi: float = 0
     yi2 = 0
+    sumx = 0
     for x in len(range(data)):
         sumy += data[x][2]
         sumxiyi += data[x][2] * (x+1)
@@ -48,6 +49,6 @@ def g(self, pid, n):
 
     trendline = ( n * sumxiyi) - (sumx * sumy )   /  (n * sumxi2) - (sumx * sumx)
 
-    sumx` = ((n+1 * n) / 2)
-    t = (n * sumxiyi) - sumx` / (n * sumxi2) -  (sumx` * sumx`)
+    sx = ((n+1 * n) / 2)
+    t = (n * sumxiyi) - sx / (n * sumxi2) -  (sx * sx)
 
