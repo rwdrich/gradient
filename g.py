@@ -29,19 +29,21 @@ def isIdle(self, pid, n):
 
     return abs(trendline) < 1
 
-def g(self, pid, n):
+def g(pid, n):
 
-    self.outputFile = "data.txt"
+    outputFile = "data.txt"
     # Calculating Memory
     data: List[List[int]] = []
-    for line in os.system(f"grep {pid} {self.outputFile} | tail -n {n}").splitlines():
+    cmd = f"grep ^{pid} {outputFile} | tail -n {n}"
+    values = os.popen(cmd).read()
+    for line in values.splitlines():
         data.append(list(map(int, line.split())))
 
     sumy = 0
-    xiyi: float = 0
-    yi2 = 0
+    sumxiyi: float = 0
+    sumxi2 = 0
     sumx = 0
-    for x in len(range(data)):
+    for x in range(len(data)):
         sumy += data[x][2]
         sumxiyi += data[x][2] * (x+1)
         sumxi2  += x * x
@@ -50,5 +52,5 @@ def g(self, pid, n):
     trendline = ( n * sumxiyi) - (sumx * sumy )   /  (n * sumxi2) - (sumx * sumx)
 
     sx = ((n+1 * n) / 2)
-    t = (n * sumxiyi) - sx / (n * sumxi2) -  (sx * sx)
+    return (n * sumxiyi) - sx / (n * sumxi2) -  (sx * sx)
 
