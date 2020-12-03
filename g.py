@@ -39,18 +39,26 @@ def g(pid, n):
     for line in values.splitlines():
         data.append(list(map(int, line.split())))
 
-    sumy = 0
+    sumy = 0.0
     sumxiyi = 0.0
-    sumxi2 = 0
-    sumx = 0
+    sumxi2 = 0.0
     for x in range(len(data)):
         sumy += data[x][2]
         sumxiyi += data[x][2] * (x+1)
-        sumxi2  += x * x
-        sumx    += x
+        sumxi2  += x+1 * x+1
 
-    trendline = ( n * sumxiyi) - (sumx * sumy )   /  (n * sumxi2) - (sumx * sumx)
+    #trendline = ( n * sumxiyi) - (sumx * sumy )   /  (n * sumxi2) - (sumx * sumx)
 
+    sx = 0.0
     sx = ((n+1 * n) / 2)
-    return ((n * sumxiyi) - sx) / ((n * sumxi2) -  (sx * sx))
+
+    print(n)
+    print(sumxiyi)
+    print(sx)
+    print(sumy)
+    print(sumxi2)
+    print(data)
+    return ((n * sumxiyi) - (sx * sumy)) / ((n * sumxi2) -  (sx * sx))
+
+
 
