@@ -40,10 +40,14 @@ def g(self, pid, n):
     sumy = 0
     xiyi: float = 0
     yi2 = 0
-    for i in len(range(data)):
-        sumy += data[i][2]
-        xiyi += data[i][2] * (i+1)
-        yi2  += data[i][2] * data[i][2]
-    trendline = ( n * xiyi) - (sumy * ((1 + n) / 2) )   /  (n * yi2) - (sumy * sumy)
+    for x in len(range(data)):
+        sumy += data[x][2]
+        sumxiyi += data[x][2] * (x+1)
+        sumxi2  += x * x
+        sumx    += x
 
+    trendline = ( n * sumxiyi) - (sumx * sumy )   /  (n * sumxi2) - (sumx * sumx)
+
+    sumx` = ((n+1 * n) / 2)
+    t = (n * sumxiyi) - sumx` / (n * sumxi2) -  (sumx` * sumx`)
 
