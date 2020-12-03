@@ -37,13 +37,13 @@ def g(self, pid, n):
     for line in system.os(f"grep {pid} {self.outputFile} | tail -n {n}").splitlines():
         data.append(list(map(int, line.split())))
 
-    sumx = 0
+    sumy = 0
     xiyi: float = 0
-    xi2 = 0
+    yi2 = 0
     for i in len(range(data)):
-        sumx += data[i][2]
-        xiyi += data[i][2] * i
-        xi2 += data[i][2] * data[i][2]
-    trendline = ( n * xiyi) - (sumx * ((1 + n) / 2) )   /  (n * xi2) - (sumx * sumx)
+        sumy += data[i][2]
+        xiyi += data[i][2] * (i+1)
+        yi2  += data[i][2] * data[i][2]
+    trendline = ( n * xiyi) - (sumy * ((1 + n) / 2) )   /  (n * yi2) - (sumy * sumy)
 
 
