@@ -44,13 +44,13 @@ def g(pid, n):
     sumxi2 = 0.0
     for x in range(len(data)):
         sumy += data[x][2]
-        sumxiyi += data[x][2] * (x+1)
-        sumxi2  += x+1 * x+1
+        sumxiyi += (data[x][2] * (x+1))
+        sumxi2  += ((x+1) * (x+1))
 
     #trendline = ( n * sumxiyi) - (sumx * sumy )   /  (n * sumxi2) - (sumx * sumx)
 
     sx = 0.0
-    sx = ((n+1 * n) / 2)
+    sx = (((n+1) * n) / 2)
 
     print(n)
     print(sumxiyi)
